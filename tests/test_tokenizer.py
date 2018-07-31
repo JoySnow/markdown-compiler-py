@@ -2,9 +2,9 @@
 #  2. use setup
 #  1. fix test error
 
-from lib import ABC
-print ABC
+#from lib import ABC
 from lib.tokenizer.tokenizer import Tokenizer
+print Tokenizer
 
 class TestTokenizer(object):
 
