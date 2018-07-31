@@ -14,30 +14,32 @@ class TestTokenizer(object):
 
 
     def test_simple(self):
-        print "RUN test simple"
         self.tokenizer = Tokenizer()
         tokens = self.tokenizer.tokenize('Hi')
-        print tokens.to_s()
-        #assert tokens.first.type, 'TEXT'
-        #assert tokens.first.value, 'Hi'
-        assert tokens.length == 1
+        assert len(tokens) == 2
+        assert tokens[0].type == 'TEXT'
+        assert tokens[0].value == 'Hi'
 
-#    def test_underscore
-#      tokens = @tokenizer.tokenize('_Foo_')
-#  
-#      assert_equal tokens.first.type, 'UNDERSCORE'
-#      assert_equal tokens.first.value, '_'
-#  
-#      assert_equal tokens.second.type, 'TEXT'
-#      assert_equal tokens.second.value, 'Foo'
-#  
-#      assert_equal tokens.third.type, 'UNDERSCORE'
-#      assert_equal tokens.third.value, '_'
-#    end
-#  
-#    def test_paragraph
-#      tokens = @tokenizer.tokenize("Hello, World!
-#  This is a _quite_ **long** text for what we've been testing so far.
-#  
-#  And this is another para.")
-#      assert_equal true, true
+    def test_underscore(self):
+        self.tokenizer = Tokenizer()
+        tokens = self.tokenizer.tokenize('_Foo_')
+        assert len(tokens) == 4
+
+        assert tokens[0].type == 'UNDERSCORE'
+        assert tokens[0].value == '_'
+
+        assert tokens[1].type == 'TEXT'
+        assert tokens[1].value == 'Foo'
+
+        assert tokens[2].type == 'UNDERSCORE'
+        assert tokens[2].value == '_'
+
+        assert tokens[3].type == 'EOF'
+        assert tokens[3].value == ''
+
+    def test_paragraph(self):
+        self.tokenizer = Tokenizer()
+        tokens = self.tokenizer.tokenize("Hello, World!\nThis is a _quite_  **long** text for what we've been testing so far.\t \n And this is another para.")
+        #for t in tokens:
+        #    print "tokens sting: ", t.to_s()
+        assert len(tokens) == 16

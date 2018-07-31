@@ -13,8 +13,8 @@ or the value are empty — that's the InvalidTokenError we are catching.
 from tokens import Token, InvalidTokenError, null_token
 
 TOKEN_TYPES = {
-  '_' :  'UNDERSCORE',
-  '*' :  'STAR',
+  '_':  'UNDERSCORE',
+  '*':  'STAR',
   '\n':  'NEWLINE',
 }
 
@@ -50,10 +50,9 @@ class TextScanner(SimpleScanner):
     def from_string(self, plain_markdown):
         text = []
         for char in plain_markdown:
-            if SimpleScanner.from_string(char) is None:
+            if SimpleScanner.from_string(char) == null_token:
                 text.append(char)
             else:
-                #raise InvalidTokenError
                 break
         if text:
             return Token('TEXT', ''.join(text))

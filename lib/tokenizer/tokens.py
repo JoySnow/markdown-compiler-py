@@ -1,6 +1,7 @@
 class InvalidTokenError(Exception):
     pass
 
+
 class NullToken(object):
 
     length = 0
@@ -10,7 +11,6 @@ class NullToken(object):
 
 
 class Token(object):
-
 
     def __init__(self, t, v):
         self.type = t
@@ -25,13 +25,6 @@ class Token(object):
     def to_s(self):
         return "<type: %s, value: %s>" % (self.type, self.value)
 
-#    @classmethod
-#    def null(cls):
-#        return NullToken()
-#
-#    @classmethod
-#    def eof(cls):
-#        return Token('EOF', '')
 
 null_token = NullToken()
 eof_token = Token('EOF', '')
