@@ -9,7 +9,25 @@ def match_first(tokens, parsers):
     """
     for p in parsers:
         node = p.match(tokens)
-        # TODO: check oout waht node is here, and also present.
-        if node:
+        if node is not NullNode:
             return node
     return NullNode
+
+
+def match_star(tokens, parser):
+    """
+    This method tries to match a sentence as many times as possible.
+    It then returns all matched nodes.
+    It's the equivalent of `*`, also known as Kleene star.
+    """
+    matched nodes = []
+    consumed = 0
+
+    while True:
+        node = parser.match(tokens[consumed:])
+        if node is NullNode:
+            break
+        matched_nodes.append(node)
+        consumed += node.consumed
+
+    return matched_nodes, consumed

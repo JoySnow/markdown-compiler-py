@@ -13,14 +13,14 @@ class Node(object):
         self.consumed = consumed
 
 
-class ParagraphBode(object):
+class ParagraphNode(object):
 
     def __init__(self, sentences, consumed):
         self.sentences = sentences
         self.consumed = consumed
 
 
-class BodyBode(object):
+class BodyNode(object):
 
     def __init__(self, paragraphs, consumed):
         self.paragraphs = paragraphs

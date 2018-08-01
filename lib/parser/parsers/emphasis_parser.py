@@ -4,6 +4,7 @@ from baseparse import BaseParser
 
 class EmphasisParser(BaseParser):
 
+    @classmethod
     def match(self, tokens):
         EMPHASIZED_TEXT = (
                 ('UNDERSCORE', 'TEXT', 'UNDERSCORE'),
@@ -14,4 +15,3 @@ class EmphasisParser(BaseParser):
             if tuple(tokens_type) in EMPHASIZED_TEXT:
                 return Node('EMPHASIS', tokens[1].value, 3)
         return NullNode()
-

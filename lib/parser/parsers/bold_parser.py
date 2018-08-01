@@ -4,6 +4,7 @@ from baseparse import BaseParser
 
 class BoldParser(BaseParser):
 
+    @classmethod
     def match(self, tokens):
         BOLD_TEXT = (
                 ('UNDERSCORE', 'UNDERSCORE', 'TEXT', 'UNDERSCORE', 'UNDERSCORE'),
