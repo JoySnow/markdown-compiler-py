@@ -1,10 +1,8 @@
-import pprint
+from pprint import pprint
 from lib.tokenizer.tokenizer import Tokenizer
 from lib.parser.parser import Parser
 print Tokenizer
 print Parser
-
-pp = pprint.PrettyPrinter(indent=4)
 
 
 class TestTokenizer(object):
@@ -28,7 +26,7 @@ class TestTokenizer(object):
         body_node = self.parser.parse(tokens)
         assert body_node.consumed == 14
         print "XXXXXXXXXXX body_node: "
-        pp.pprint(body_node.to_s())
+        pprint(body_node.to_s())
         print "XXXXXXXXXXX end of body_node. "
         assert body_node.to_s() == [
             'BodyNode - @consumed = 14',
