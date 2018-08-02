@@ -1,5 +1,5 @@
 from ..nodes import Node, NullNode
-from baseparse import BaseParser
+from base_parser import BaseParser
 
 
 class BoldParser(BaseParser):

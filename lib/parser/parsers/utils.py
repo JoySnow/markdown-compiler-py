@@ -1,6 +1,6 @@
 from ..nodes import Node, NullNode
 
-def match_first(tokens, parsers):
+def match_first(tokens, *parsers):
     """
     Tries to match one parser, the order is very important here as
     they get tested first-in-first-tried.
@@ -20,12 +20,13 @@ def match_star(tokens, parser):
     It then returns all matched nodes.
     It's the equivalent of `*`, also known as Kleene star.
     """
-    matched nodes = []
+    matched_nodes = []
     consumed = 0
 
     while True:
         node = parser.match(tokens[consumed:])
-        if node is NullNode:
+        print "++ match_star DEBUG: type of node): ", type(node), node
+        if isinstance(node, NullNode):
             break
         matched_nodes.append(node)
         consumed += node.consumed

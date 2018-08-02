@@ -8,5 +8,6 @@ from utils import match_first
 
 class SentenceParser(BaseParser):
 
+    @classmethod
     def match(self, tokens):
         return match_first(tokens, EmphasisParser, BoldParser, TextParser)

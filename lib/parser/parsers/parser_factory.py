@@ -24,13 +24,12 @@ class ParserFactory(object):
     def __init__(self):
         self._cached_parsers = {}  # store (parser_class, parser_instance) maps
 
-    @classmethod
     def build(self, name):
         parser_class = PARSERS.get(name.lower())
         if not parser_class:
             raise "Invalid parser name: %s" % name
 
-        print "DEBUG: tyep of parser_class: ", type(parser_class)
-        print "DEBU: parser_class: ", parser_class
+        print "ParserFactory: DEBUG: tyep of parser_class: ", type(parser_class)
+        print "ParserFactory: DEBU: parser_class: ", parser_class
 
-        return self._chached_parsers.setdefault(parser_class, parser_class())
+        return self._cached_parsers.setdefault(parser_class, parser_class())

@@ -1,12 +1,14 @@
-require_relative 'parser_factory'
+#from parser_factory import ParserFactory
 
 class BaseParser(object):
 
-    # We use some reflection to prettify the parser depedencies. Basically, from
-    # calling a `foo_parser` method is the same as doing `ParserFactory.build('foo_parser')`.
-    #
-    def method_missing(name, *args, &block)
-      raise ArgumentError.new("Method #{name} does not exist.") unless name.to_s.end_with?('_parser')
-      ParserFactory.build(name, *args, &block)
-    #TODO: fix this method ....
+    # We use some reflection to prettify the parser depedencies.
+    # Basically, from calling a `foo_parser` method is the same as
+    # doing `ParserFactory.build('foo_parser')`.
 
+    # def method_missing(self, name):
+    #     pass
+
+    #NOTE: This method_missing is not never called in this prject,
+    #      commented it out here ....
+    pass
