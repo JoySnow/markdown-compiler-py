@@ -37,7 +37,7 @@ class Parser(object):
         self._body_parser = self._parser_factory.build('body_parser')
 
     def parse(self, tokens):
-        print "Parser() .parse DEBUG: len(tokens) ", len(tokens)
+        print "++ Parser() .parse DEBUG: len(tokens) ", len(tokens)
         if len(tokens) == 0:
             raise Exception("Empty tokens list, ERROR!")
 

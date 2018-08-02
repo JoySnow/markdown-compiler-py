@@ -7,8 +7,10 @@ class BodyParser(BaseParser):
 
     @classmethod
     def match(self, tokens):
+        print ">>> BodyParser.match"
 
         nodes, consumed = match_star(tokens, ParagraphParser)
+        print ">>> returned nodes, consumed: ", nodes, consumed
         if not nodes:
             return NullNode()
         else:

@@ -7,11 +7,12 @@ def match_first(tokens, *parsers):
     If a parser matched, the function returns the matched node,
     otherwise, it returns a null node.
     """
+    print "-------- match_first "
     for p in parsers:
         node = p.match(tokens)
-        if node is not NullNode:
+        if not isinstance(node,NullNode):
             return node
-    return NullNode
+    return NullNode()
 
 
 def match_star(tokens, parser):
@@ -32,3 +33,13 @@ def match_star(tokens, parser):
         consumed += node.consumed
 
     return matched_nodes, consumed
+
+def print_tokens(tokens):
+    for t in tokens:
+        print t.to_s()
+    print "End of print_tokens"
+
+def print_node(node):
+    if not isinstance(node, NullNode):
+        print node.type, node.value
+    print "^^^^^^^ end of node print "

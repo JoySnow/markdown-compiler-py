@@ -8,5 +8,8 @@ class ParagraphParser(BaseParser):
 
     @classmethod
     def match(self, tokens):
-        return match_first(tokens, SentencesAndNewlineParser,
+        print ">>>> ParagraphParser.match"
+        node = match_first(tokens, SentencesAndNewlineParser,
                            SentencesAndEofParser)
+        print ">>>> returned node: ", node
+        return node

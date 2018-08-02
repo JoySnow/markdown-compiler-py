@@ -8,7 +8,9 @@ class SentencesAndNewlineParser(BaseParser):
     @classmethod
     def match(self, tokens):
 
+        print ">>>>> SentencesAndNewlineParser match"
         nodes, consumed = match_star(tokens, SentenceParser)
+        print ">>>>> nodes, consumed: ", nodes, consumed
         if not nodes:
             return NullNode()
 
