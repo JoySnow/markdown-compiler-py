@@ -1,27 +1,17 @@
-#TODO: 
-#  2. use setup
-#  1. fix test error
-
 from lib.parser.parser import Parser
 from lib.tokenizer.tokenizer import Tokenizer
 from lib.generator.generator import Generator
 
-class TestGeneator(object):
+tokenizer = Tokenizer()
+parser = Parser()
+generator = Generator()
 
-    #def setup_function(self):
-    #    print "RUN test setup"
-    #    self.tokenizer = Tokenizer()
+def test_simple():
 
+    markdown = "__Foo__ and *text*.\n\nAnother para."
 
-    def test_simple(self):
-        self.tokenizer = Tokenizer()
-        self.parser = Parser()
-        self.generator = Generator()
+    tokens = tokenizer.tokenize(markdown)
+    ast = parser.parse(tokens)
+    html = generator.generate(ast)
 
-        markdown = "__Foo__ and *text*.\n\nAnother para."
-
-        tokens = self.tokenizer.tokenize(markdown)
-        ast = self.parser.parse(tokens)
-        html = self.generator.generate(ast)
-
-        assert html == "<p><strong>Foo</strong> and <em>text</em>.</p><p>Another para.</p>"
+    assert html == "<p><strong>Foo</strong> and <em>text</em>.</p><p>Another para.</p>"
